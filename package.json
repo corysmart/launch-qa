@@ -1,0 +1,11 @@
+{
+  "name": "launch-qa",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Minimal review API for launch readiness checks.",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test"
+  }
+}

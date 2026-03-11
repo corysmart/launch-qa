@@ -40,3 +40,47 @@ Current ChatGPT apps already cover content creation, file search, meetings, and 
 ## Long-Term Direction
 
 Later versions can add optional exports to GitHub, Jira, Linear, or Slack after the core review flow is stable.
+
+## MVP Backend
+
+This repo now includes a minimal no-dependency Node backend that accepts a review request and returns a structured report.
+
+### Run
+
+```bash
+npm start
+```
+
+The API listens on `http://localhost:3000` by default.
+
+### Endpoints
+
+- `GET /health`
+- `POST /api/review`
+
+### Example Request
+
+```json
+{
+  "url": "https://example.com",
+  "screenshots": [
+    {
+      "name": "home-mobile.png",
+      "mimeType": "image/png",
+      "width": 390,
+      "height": 844,
+      "sizeBytes": 128004
+    }
+  ],
+  "context": {
+    "goal": "Increase signups before launch"
+  }
+}
+```
+
+### Current Behavior
+
+- Fetches public HTML when a URL is provided
+- Runs deterministic checks across accessibility, responsiveness, copy clarity, SEO basics, and evidence coverage
+- Returns a qualitative verdict plus prioritized findings
+- Documents v1 scope and privacy decisions in `docs/v1-spec.md`
